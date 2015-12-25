@@ -1,0 +1,17 @@
+<section>
+	<div>
+		<br><br><br><br><br>
+		<% if user_signed_in? %>
+			<p>Bienvenido <%= current_user.email %></p>
+			<p><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete %></p>
+		<% else %>
+			<p><%= link_to "Crear una cuenta", new_user_registration_path %></p>
+			<p>Si ya tienes cuenta: <%= link_to "Inicia Sesión", new_user_session_path %></p>
+		<% end %>
+
+	</div>
+
+
+<h1>Post#index</h1>
+<p>Find me in app/views/post/index.html.erb</p>
+</section>

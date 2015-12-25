@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :integer          not null, primary key
+#  titulo     :string
+#  cuerpo     :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  cuerpo: MyString
+
+two:
+  titulo: MyString
+  cuerpo: MyString
