@@ -1,5 +1,5 @@
 module PostsHelper
 	def form_title
-		@post.new_record? ? "Nuevo Post" : "Modificar Post"		
+		@post.new_record? ? "Crear Post" : "Editar Post"		
 	end	
 end

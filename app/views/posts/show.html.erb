@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1">
+            <h5><%= link_to "Volver", posts_path %></h5> 
+            <div class="post-title">
+                <%= @post.titulo %>                		
+            </div>
+            <div id="post-body">
+                <%= @post.cuerpo %>                     
+            </div>
+            <% @post.comments.each do |comment| %>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <%=%> comentó hace alrededor de <%= time_ago_in_words comment.created_at %>
+                    </div>
+                    <div class="panel-body">
+                        <%= markdown(comment.body) %>
+                    </div>
+                </div>            
+            <% end %>
+            <% if signed_in? %>
+                <% if @comment.errors.any? %>
+                    <br />
+                    <div class="alert alert-danger">
+                        <ul>
+                            <% @comment.errors.full_messages.each do |msg| %>
+                                <li><%= msg %></li>
+                            <% end %>
+                        </ul>
+                    </div>
+                <% end %>            
+                <%= form_for [@post, @comment] do |f| %>
+                    <div class="form-group">
+                        <%=  f.text_area :body, class: "form-control input-lg", placeholder: "Comentar..." %>
+                    </div>
+                    <div>
+                        <%= f.submit "Comentar", class: "btn btn-primary" %>
+                        <%= f.hidden_field :user_id, :value => current_user.id%>
+                    </div>  
+                <% end %> 
+            <% end %>            
+        </div>    
+    </div> <!-- .row-->
+</div> <!-- .container -->
